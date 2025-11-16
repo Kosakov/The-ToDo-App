@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+📝 The ToDo App — A Small React App That Gets the Job Done
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The ToDo App is a clean and lightweight task manager built with React + TypeScript, structured to be beginner-friendly, easy to extend, and pleasant to maintain. It won't change the world… but it works reliably and looks good doing it.
 
-Currently, two official plugins are available:
+🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Add new tasks through a dedicated input component
 
-## React Compiler
+Mark tasks as completed
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Delete tasks
 
-## Expanding the ESLint configuration
+Each task gets a unique ID via a simple NewTask class
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Clear, centralized state management using useState in the App component
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🧩 Architecture
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The app is split into simple, focused components:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+App — holds the task list and main logic
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+TaskInput — manages its own local input state + receives addTask as a prop
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+TaskList — displays all tasks
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+TaskItem — represents a single task and handles its own interactions
+
+This structure keeps components small, predictable, and easy to navigate.
+
+🛠️ Tech Stack
+
+React 18 + TypeScript
+
+Vite for fast development
+
+CSS (or any styling approach you prefer)
+
+🎯 Why This Exists
+
+Sometimes you just need a small, clean project where you can practice new concepts, experiment with architecture, and keep your thoughts organized. The ToDo App is exactly that — a compact sandbox with a professional structure.
+
+📦 Getting Started
+npm install
+npm run dev
+
+🧠 Planned Improvements
+
+Filters: active / completed
+
+Local storage persistence
+
+More polished UI
+
+❤️ Final Note
+
+A small project, but built with intention — clean code, clear responsibilities, and a bit of personality. A simple React app that doesn’t try to be more than it is, yet still gets things done the right way.
