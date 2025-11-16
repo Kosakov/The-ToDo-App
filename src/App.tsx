@@ -28,16 +28,36 @@ function App() {
     });
   }
 
+  function deleteTask(taskId: number): void {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
+  }
+
+  function completeTask(taskId: number): void {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) => {
+        if (task.id === taskId) {
+          let updatedTask = { ...task, completed: true };
+          return updatedTask;
+        }
+        return task;
+      })
+    );
+  }
+
   return (
     <>
       <header>
-        <h1>To Do App</h1>
+        <h1>The ToDo App</h1>
       </header>
       <section>
         <TaskInput addTask={addTask} />
       </section>
       <section>
-        <TaskList tasks={tasks} />
+        <TaskList
+          tasks={tasks}
+          deleteTask={deleteTask}
+          completeTask={completeTask}
+        />
       </section>
     </>
   );
