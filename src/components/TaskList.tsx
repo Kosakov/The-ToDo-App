@@ -1,16 +1,32 @@
 import type Task from "../interfaces/Task.inteface";
-import type TaskProps from "../interfaces/TaskProps.interface";
+import type TaskListProps from "../interfaces/TaskListProps.interface";
 import TaskItem from "./TaskItem";
 
-export default function TaskList({tasks,deleteTask,completeTask}:TaskProps){
-    return (
+export default function TaskList({
+  filter,
+  tasks,
+  deleteTask,
+  completeTask,
+}: TaskListProps) {
+  return (
     <>
-      <h3>ToDo's:</h3>
+      <h3 className="font-medium">ToDo's:</h3>
       <ol>
-        {tasks.map((task: Task) => (
-          <TaskItem key={task.id} task={task} deleteTask={deleteTask} completeTask={completeTask}></TaskItem>
-          
-        ))}
+        {tasks
+          .filter((task) => {
+            if (filter == "all") {
+              return task;
+            }
+            return task.status == filter;
+          })
+          .map((task: Task) => (
+            <TaskItem
+              key={task.id}
+              task={task}
+              deleteTask={deleteTask}
+              completeTask={completeTask}
+            ></TaskItem>
+          ))}
       </ol>
     </>
   );

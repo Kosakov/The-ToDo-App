@@ -3,22 +3,26 @@ import "./App.css";
 import TaskInput from "./components/TaskInput";
 import type Task from "./interfaces/Task.inteface";
 import TaskList from "./components/TaskList";
+import Filter from "./components/Filter";
+
+export type TaskStatus = "completed" | "pending";
 
 class NewTask implements Task {
   private static lastId: number = 0;
   title: string;
-  completed: boolean;
+  status: TaskStatus;
   id: number;
 
   constructor(title: string) {
     this.title = title;
     NewTask.lastId += 1;
     this.id = NewTask.lastId;
-    this.completed = false;
+    this.status = "pending";
   }
 }
 function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [filter, setFilter] = useState<TaskStatus | "all">("all");
 
   function addTask(title: string): void {
     let newTask = new NewTask(title);
@@ -34,9 +38,9 @@ function App() {
 
   function completeTask(taskId: number): void {
     setTasks((prevTasks) =>
-      prevTasks.map((task) => {
+      prevTasks.map((task: Task) => {
         if (task.id === taskId) {
-          let updatedTask = { ...task, completed: true };
+          let updatedTask: Task = { ...task, status: "completed" };
           return updatedTask;
         }
         return task;
@@ -53,7 +57,12 @@ function App() {
         <TaskInput addTask={addTask} />
       </section>
       <section>
+        <span>
+          Show:
+          <Filter filterTasks={setFilter} />
+        </span>
         <TaskList
+          filter={filter}
           tasks={tasks}
           deleteTask={deleteTask}
           completeTask={completeTask}
