@@ -26,6 +26,8 @@ TaskList — displays all tasks
 
 TaskItem — represents a single task and handles its own interactions
 
+TaskFilter — You can filter between All Task, Completed or the Pending ones.
+
 This structure keeps components small, predictable, and easy to navigate.
 
 🛠️ Tech Stack
@@ -34,7 +36,7 @@ React 18 + TypeScript
 
 Vite for fast development
 
-CSS (or any styling approach you prefer)
+Tailwind CSS
 
 🎯 Why This Exists
 
@@ -45,8 +47,6 @@ npm install
 npm run dev
 
 🧠 Planned Improvements
-
-Filters: active / completed
 
 Local storage persistence
 

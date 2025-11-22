@@ -3,7 +3,7 @@ import "./App.css";
 import TaskInput from "./components/TaskInput";
 import type Task from "./interfaces/Task.inteface";
 import TaskList from "./components/TaskList";
-import Filter from "./components/Filter";
+import TaskFilter from "./components/TaskFilter";
 
 export type TaskStatus = "completed" | "pending";
 
@@ -59,7 +59,7 @@ function App() {
       <section>
         <span>
           Show:
-          <Filter filterTasks={setFilter} />
+          <TaskFilter filterTasks={setFilter} />
         </span>
         <TaskList
           filter={filter}

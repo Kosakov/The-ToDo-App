@@ -1,7 +1,7 @@
 import type { TaskStatus } from "../App";
 import type FilterProps from "../interfaces/FilterProps.interface";
 
-export default function Filter({ filterTasks }: FilterProps) {
+export default function TaskFilter({ filterTasks }: FilterProps) {
   return (
     <>
       <select
