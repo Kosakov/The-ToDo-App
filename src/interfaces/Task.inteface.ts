@@ -1,7 +1,7 @@
-import type { TaskStatus } from "../App";
+import type { TaskStatus } from "./TaskStatus.type";
 
 export default interface Task {
-  id: number;
+  id: string;
   title: string;
   status: TaskStatus;
 }
