@@ -48,8 +48,6 @@ npm run dev
 
 🧠 Planned Improvements
 
-Local storage persistence
-
 More polished UI
 
 ❤️ Final Note
