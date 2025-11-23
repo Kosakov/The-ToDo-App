@@ -1,28 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import TaskInput from "./components/TaskInput";
 import type Task from "./interfaces/Task.inteface";
 import TaskList from "./components/TaskList";
 import TaskFilter from "./components/TaskFilter";
+import type { TaskStatus } from "./interfaces/TaskStatus.type";
+import NewTask from "./Utils/Task";
+import { getItemsFromLocalStorage } from "./Utils/Utils";
 
-export type TaskStatus = "completed" | "pending";
 
-class NewTask implements Task {
-  private static lastId: number = 0;
-  title: string;
-  status: TaskStatus;
-  id: number;
-
-  constructor(title: string) {
-    this.title = title;
-    NewTask.lastId += 1;
-    this.id = NewTask.lastId;
-    this.status = "pending";
-  }
-}
 function App() {
-  const [tasks, setTasks] = useState<Task[]>([]);
+  const [tasks, setTasks] = useState<Task[]>(getItemsFromLocalStorage("tasks") || []);
   const [filter, setFilter] = useState<TaskStatus | "all">("all");
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
 
   function addTask(title: string): void {
     let newTask = new NewTask(title);
@@ -32,11 +25,11 @@ function App() {
     });
   }
 
-  function deleteTask(taskId: number): void {
+  function deleteTask(taskId: string): void {
     setTasks((prevTasks) => prevTasks.filter((task) => task.id !== taskId));
   }
 
-  function completeTask(taskId: number): void {
+  function completeTask(taskId: string): void {
     setTasks((prevTasks) =>
       prevTasks.map((task: Task) => {
         if (task.id === taskId) {

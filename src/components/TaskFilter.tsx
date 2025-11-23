@@ -1,5 +1,5 @@
-import type { TaskStatus } from "../App";
 import type FilterProps from "../interfaces/FilterProps.interface";
+import type { TaskStatus } from "../interfaces/TaskStatus.type";
 
 export default function TaskFilter({ filterTasks }: FilterProps) {
   return (
