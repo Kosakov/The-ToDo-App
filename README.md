@@ -1,5 +1,7 @@
 📝 The ToDo App — A Small React App That Gets the Job Done
 
+You can find it here: https://kosakov.github.io/The-ToDo-App/
+
 The ToDo App is a clean and lightweight task manager built with React + TypeScript, structured to be beginner-friendly, easy to extend, and pleasant to maintain. It won't change the world… but it works reliably and looks good doing it.
 
 🚀 Features
